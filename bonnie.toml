@@ -1,0 +1,11 @@
+version="0.3.2"
+
+[scripts]
+site = "concurrently \"bonnie export\" \"bonnie tailwind\""
+export = "perseus export -sw --cargo-engine-path cargo-clif"
+tailwind.cmd = [
+    "tailwind -i styles/index.css -c styles/tailwind.config.js -o static/tailwind.css -w"
+]
+tailwind.subcommands.prod.cmd = [
+    "NODE_ENV=production tailwind -i styles/index.css -c styles/tailwind.config.js -o static/tailwind.css --minify"
+]

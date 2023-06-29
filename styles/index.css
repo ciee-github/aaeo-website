@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    scroll-behavior: smooth;
+}
+
+/* Page layout of the header, content, and footer */
+html, body, #root {
+    height: 100vh;
+}
+#root {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr min-content;
+    grid-template-areas:
+        'header'
+        'main'
+        'footer';
+}
+/* This is equivalent to `main`, but also works on docs pages with a sidebar */
+header {
+    position: fixed;
+    top: 0;
+    z-index: 99;
+    grid-area: header;
+}
+main {
+    grid-area: main;
+}
+footer {
+    grid-area: footer;
+}
