@@ -1,11 +1,17 @@
 version="0.3.2"
 
 [scripts]
-site = "concurrently \"bonnie export\" \"bonnie tailwind\""
+site.cmd = "concurrently \"bonnie export\" \"bonnie tailwind\""
+site.subcommands.deploy-prod = [
+    "bonnie tailwind prod",
+    # TODO Change to domain name
+    "PERSEUS_BASE_PATH=https://ciee-github.github.io/aaeo-website perseus deploy -e",
+    "PERSEUS_BASE_PATH=https://ciee-github.github.io/aaeo-website perseus export-error-page --code 404 --output pkg/404.html",
+]
 export = "perseus export -sw --cargo-engine-path cargo-clif"
 tailwind.cmd = [
     "tailwind -i styles/index.css -c styles/tailwind.config.js -o static/tailwind.css -w"
 ]
 tailwind.subcommands.prod.cmd = [
-    "NODE_ENV=production tailwind -i styles/index.css -c styles/tailwind.config.js -o static/tailwind.css --minify"
+    "NODE_ENV=production tailwindcss -i styles/index.css -c styles/tailwind.config.js -o static/tailwind.css --minify"
 ]
