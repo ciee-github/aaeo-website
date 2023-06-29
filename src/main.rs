@@ -19,4 +19,6 @@ pub fn main<G: Html>() -> PerseusApp<G> {
                 }
             }
         })
+        // TODO
+        .error_views(ErrorViews::unlocalized_development_default())
 }
