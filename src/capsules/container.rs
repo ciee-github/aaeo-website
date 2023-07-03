@@ -10,8 +10,9 @@ pub fn Container<'a, G: Html>(cx: Scope<'a>, props: ContainerProps<'a, G>) -> Vi
             nav(class = "py-4 shadow-md flex justify-center w-full px-8") {
                 div(class = "w-full flex xs:justify-around items-center") {
                     a(class = "flex items-center", href = "#welcome") {
-                        // TODO Logo
-                        span(class = "bg-yellow-500 border-white border rounded-full h-12 w-12 xs:ml-6") {}
+                        span(class = "bg-white rounded-full h-16 w-16 xs:ml-6") {
+                            img(src = ".perseus/static/logo.ico") {}
+                        }
                         h1(class = "px-4 text-xl xs:text-2xl font-bold xs:font-extrabold") { (props.title) }
                     }
                     ul(class = "sm:text-lg items-center underline hidden xs:flex") {

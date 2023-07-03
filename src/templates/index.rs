@@ -1,4 +1,4 @@
-use crate::capsules::Container;
+use crate::capsules::{Container, SPONSOR};
 use perseus::prelude::*;
 use serde::{Deserialize, Serialize};
 use sycamore::prelude::*;
@@ -24,14 +24,14 @@ fn index_page<G: Html>(cx: Scope, state: IndexState) -> View<G> {
                     }
                 }
                 div(class = "h-full w-full") {
-                    span(class = "flex justify-center items-center h-full w-full bg-slate-100") {
+                    span(class = "flex justify-center items-center h-full w-full bg-blue-700 text-white") {
                         p(class = "font-bold text-lg") { "Image here" }
                     }
                 }
             }
             section(id = "competition", class = "w-full min-h-screen grid grid-rows-3 md:grid-rows-1 md:grid-cols-3") {
                 div(class = "h-full w-full") {
-                     span(class = "flex justify-center items-center h-full w-full bg-slate-100") {
+                     span(class = "flex justify-center items-center h-full w-full bg-blue-700 text-white") {
                         p(class = "font-bold text-lg") { "Image here" }
                     }
                 }
@@ -42,8 +42,15 @@ fn index_page<G: Html>(cx: Scope, state: IndexState) -> View<G> {
                     ) {}
                 }
             }
-            section(id = "about", class = "w-full h-screen bg-emerald-100") {
-
+            section(id = "about", class = "w-full min-h-screen py-8 flex flex-col justify-center items-center w-full") {
+                div(class = "max-w-4xl text-center") {
+                    h1(class = "text-4xl") { "About Us" }
+                    p(class = "mt-1 mb-4") { (state.about) }
+                    h3(class = "text-2xl mb-2") { "Our Sponsors" }
+                    (SPONSOR.widget(cx, "unsw", ()))
+                    (SPONSOR.widget(cx, "ciee", ()))
+                    (SPONSOR.widget(cx, "elite", ()))
+                }
             }
         }
     }
@@ -53,6 +60,8 @@ fn index_page<G: Html>(cx: Scope, state: IndexState) -> View<G> {
 struct IndexState {
     /// The HTML to be interpolated into the "competition" section of the site.
     competition_html: String,
+    /// The text to go at the header of the about section.
+    about: String,
 }
 
 #[engine_only_fn]
@@ -73,7 +82,12 @@ async fn get_build_state(
     let md_parser = Parser::new(&competition_md);
     html::push_html(&mut competition_html, md_parser);
 
-    Ok(IndexState { competition_html })
+    let about = std::fs::read_to_string("content/about.txt")?;
+
+    Ok(IndexState {
+        competition_html,
+        about,
+    })
 }
 
 pub fn get_template<G: Html>() -> Template<G> {
