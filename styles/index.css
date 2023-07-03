@@ -33,11 +33,12 @@ footer {
     grid-area: footer;
 }
 
+/* These paths are relative to `.perseus/static` */
 .bg-welcome {
-    background-image: url("/.perseus/static/welcome_bg.svg");
+    background-image: url("./welcome_bg.svg");
 }
 .bg-competition {
-    background-image: url("/.perseus/static/competition_wave.svg");
+    background-image: url("./competition_wave.svg");
 }
 
 /* Fix the scroll targets with a fixed-position header */
