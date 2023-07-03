@@ -32,3 +32,15 @@ main {
 footer {
     grid-area: footer;
 }
+
+.bg-welcome {
+    background-image: url("/.perseus/static/welcome_bg.svg");
+}
+.bg-competition {
+    background-image: url("/.perseus/static/competition_wave.svg");
+}
+
+/* Fix the scroll targets with a fixed-position header */
+section {
+    scroll-margin-top: 80px;
+}

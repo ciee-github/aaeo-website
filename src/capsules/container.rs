@@ -6,12 +6,12 @@ pub fn Container<'a, G: Html>(cx: Scope<'a>, props: ContainerProps<'a, G>) -> Vi
 
     view! {
         cx,
-        header(class = "w-full bg-white") {
+        header(class = "w-full bg-transparent backdrop-blur-md") {
             nav(class = "py-4 shadow-md flex justify-center w-full px-8") {
                 div(class = "w-full flex xs:justify-around items-center") {
                     a(class = "flex items-center", href = "#welcome") {
                         // TODO Logo
-                        span(class = "bg-slate-500 rounded-full h-12 w-12") {}
+                        span(class = "bg-yellow-500 border-white border rounded-full h-12 w-12 xs:ml-6") {}
                         h1(class = "px-4 text-xl xs:text-2xl font-bold xs:font-extrabold") { (props.title) }
                     }
                     ul(class = "sm:text-lg items-center underline hidden xs:flex") {
@@ -44,5 +44,5 @@ fn NavLink<G: Html>(cx: Scope, title: &'static str, link: &'static str) -> View<
 #[derive(Prop)]
 pub struct ContainerProps<'a, G: Html> {
     title: &'static str,
-    children: Children<'a, G>
+    children: Children<'a, G>,
 }
