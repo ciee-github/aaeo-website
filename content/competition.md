@@ -12,4 +12,4 @@ All participants will be informed of the policy area serving as the focus for th
 
 ## Grading
 
-Students will be graded on both rounds of the competition, with the top 10 performers presented with prizes. The top six students will receive gold, silver, and bronze medals. The next tier of four performers will be given *Honourable Mention* awards.
+Students will be graded on both rounds of the competition, with the top three students receiving gold, silver, and bronze medals.
