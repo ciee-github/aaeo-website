@@ -37,10 +37,13 @@ fn index_page<G: Html>(cx: Scope, state: IndexState) -> View<G> {
                     }
                 }
                 div(class = "row-start-1 row-span-2 md:col-span-2 md:col-start-2 flex flex-col justify-center items-center p-4 py-8 bg-competition bg-cover") {
-                    div(
-                        class = "prose prose-slate prose-h1:underline md:text-right md:ml-20 my-6",
-                        dangerously_set_inner_html = &format!("<h1>Competition</h1>{}", state.competition_html),
-                    ) {}
+                    div(class = "prose prose-slate prose-h1:underline md:text-right md:ml-20 my-6") {
+                        div(dangerously_set_inner_html = &format!("<h1>Competition</h1>{}", state.competition_html)) {}
+                        a(
+                            class = "rounded-lg border-2 border-neutral-600 hover:bg-amber-400 hover:border-amber-400 transition-colors duration-200 text-lg p-2 px-4 text-neutral-600 hover:text-white",
+                            href = "schedule"
+                        ) { "Schedule" }
+                    }
                 }
             }
             section(id = "about", class = "w-full min-h-screen py-8 flex flex-col justify-center items-center w-full") {

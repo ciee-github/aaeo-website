@@ -1,4 +1,7 @@
 mod capsules;
+mod global_state;
+#[cfg(client)]
+mod supabase;
 mod templates;
 
 use perseus::prelude::*;
@@ -7,7 +10,9 @@ use perseus::prelude::*;
 pub fn main<G: Html>() -> PerseusApp<G> {
     PerseusApp::new()
         .template(crate::templates::index::get_template())
+        .template(crate::templates::schedule::get_template())
         .capsule_ref(&*crate::capsules::SPONSOR)
+        .global_state_creator(crate::global_state::get_gsc())
         .static_alias("/favicon.ico", "static/logo.ico")
         .index_view(|cx| {
             sycamore::view! {
@@ -16,6 +21,7 @@ pub fn main<G: Html>() -> PerseusApp<G> {
                     head {
                         link(rel = "stylesheet", href = ".perseus/static/tailwind.css") {}
                         meta(name = "viewport", content = "width=device-width") {}
+                        script(src = "https://unpkg.com/@supabase/supabase-js@2") {}
                     }
                     body {
                         PerseusRoot()
