@@ -11,7 +11,7 @@ fn index_page<G: Html>(cx: Scope, state: IndexState) -> View<G> {
             section(id = "welcome", class = "w-full h-screen grid grid-rows-[1fr_1fr_20rem] md:grid-rows-1 md:grid-cols-3") {
                 div(class = "flex flex-col justify-center row-span-2 md:col-span-2 text-center md:text-left md:pl-8 lg:pl-16 xl:pl-20 md:px-4 bg-welcome bg-cover") {
                     h1(class = "text-3xl md:text-5xl text-neutral-600 font-extrabold mb-2 md:mb-6 mt-16 md:mt-10 max-w-4xl") { "The Australasian Economics Olympiad" }
-                    h3(class = "text-neutral-600 text-xl md:text-3xl font-extrabold") { "Discover the Economist in You" }
+                    p(class = "text-neutral-600 text-xl md:text-3xl font-extrabold") { "Discover the Economist in You" }
 
                     div(class = "font-semibold flex justify-center md:justify-start mt-2") {
                         a(
@@ -25,16 +25,12 @@ fn index_page<G: Html>(cx: Scope, state: IndexState) -> View<G> {
                     }
                 }
                 div(class = "h-full w-full") {
-                    span(class = "flex justify-center items-center h-full w-full bg-blue-700 text-white") {
-                        img(class = "object-cover h-full w-full", src = ".perseus/static/people.jpg") {}
-                    }
+                    span(class = "flex justify-center items-center h-full w-full text-white bg-cover bg-people") {}
                 }
             }
             section(id = "competition", class = "w-full min-h-screen grid grid-rows-[1fr_1fr_20rem] md:grid-rows-1 md:grid-cols-3") {
                 div(class = "h-full w-full") {
-                     span(class = "flex justify-center items-center h-full w-full bg-blue-700 text-white") {
-                         img(class = "object-cover h-full w-full", src = ".perseus/static/compass.jpg") {}
-                    }
+                    span(class = "flex justify-center items-center h-full w-full text-white bg-cover bg-compass") {}
                 }
                 div(class = "row-start-1 row-span-2 md:col-span-2 md:col-start-2 flex flex-col justify-center items-center p-4 py-8 bg-competition bg-cover") {
                     div(class = "prose prose-slate prose-h1:underline md:text-right md:ml-20 my-6") {

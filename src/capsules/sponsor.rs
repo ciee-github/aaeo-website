@@ -34,7 +34,7 @@ fn sponsor_capsule<G: Html>(cx: Scope, state: SponsorState, _props: ()) -> View<
         div(class = "grid grid-rows-3 md:grid-rows-1 md:grid-cols-2 max-w-5xl border-b border-slate-700 p-4") {
             div(class = "flex justify-center items-center") {
                 a(href = state.link) {
-                    img(src = state.logo_url, height = "150", width = "150") {}
+                    img(src = state.logo_url, alt = state.name, height = "150", width = "150") {}
                 }
             }
             div(class = "flex flex-col justify-center row-span-2 text-left") {
@@ -55,7 +55,7 @@ async fn get_build_state(
     let link = desc_lines.remove(0).trim();
     let desc = desc_lines.join("\n");
 
-    if !Path::new(format!("static/{}.png", &path).as_str()).exists() {
+    if !Path::new(format!("static/{}.avif", &path).as_str()).exists() {
         return Err(std::io::Error::new(
             std::io::ErrorKind::NotFound,
             format!("logo file not found for sponsor {}", &path).as_str(),

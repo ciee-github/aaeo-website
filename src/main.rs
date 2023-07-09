@@ -17,10 +17,11 @@ pub fn main<G: Html>() -> PerseusApp<G> {
         .index_view(|cx| {
             sycamore::view! {
                 cx,
-                html {
+                html(lang = "en") {
                     head {
                         link(rel = "stylesheet", href = ".perseus/static/tailwind.css") {}
                         meta(name = "viewport", content = "width=device-width") {}
+                        meta(name = "description", content = "Information about the Australasian Economics Olympiad (AAEO).")
                         script(src = "https://unpkg.com/@supabase/supabase-js@2") {}
                     }
                     body {

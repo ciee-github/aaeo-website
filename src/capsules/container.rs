@@ -11,7 +11,7 @@ pub fn Container<'a, G: Html>(cx: Scope<'a>, props: ContainerProps<'a, G>) -> Vi
                 div(class = "w-full flex xs:justify-around items-center") {
                     a(class = "flex items-center", href = "#welcome") {
                         span(class = "bg-white rounded-full h-16 w-16 xs:ml-6") {
-                            img(src = ".perseus/static/logo.ico") {}
+                            img(src = ".perseus/static/logo.ico", alt = "Logo", height = "100%", width = "100%") {}
                         }
                         h1(class = "px-4 text-xl xs:text-2xl font-bold xs:font-extrabold") { (props.title) }
                     }

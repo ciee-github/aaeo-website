@@ -40,6 +40,12 @@ footer {
 .bg-competition {
     background-image: url("./competition_wave.svg");
 }
+.bg-people {
+    background-image: url("./people.avif");
+}
+.bg-compass {
+    background-image: url("./compass.avif")
+}
 
 /* Fix the scroll targets with a fixed-position header */
 section {
