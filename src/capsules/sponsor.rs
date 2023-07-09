@@ -64,7 +64,7 @@ async fn get_build_state(
     }
 
     Ok(SponsorState {
-        logo_url: format!(".perseus/static/{}.png", &path),
+        logo_url: format!(".perseus/static/{}.avif", &path),
         name: path,
         description: desc.to_string(),
         link: link.to_string(),
