@@ -5,7 +5,7 @@ export async function sign_in(email) {
     const { error } = await window.supabase_client.auth.signInWithOtp({
         email,
         options: {
-            emailRedirectTo: "http://localhost:8080/schedule"
+            emailRedirectTo: "https://australasianeconolympiad.org/schedule"
         }
     });
     if (error) throw error;
