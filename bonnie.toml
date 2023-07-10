@@ -5,8 +5,8 @@ site.cmd = "concurrently \"bonnie export\" \"bonnie tailwind\""
 site.subcommands.deploy-prod = [
     "bonnie tailwind prod",
     # TODO Change to domain name
-    "PERSEUS_BASE_PATH=https://ciee-github.github.io/aaeo-website perseus deploy -e",
-    "PERSEUS_BASE_PATH=https://ciee-github.github.io/aaeo-website perseus export-error-page --code 404 --output pkg/404.html",
+    "PERSEUS_BASE_PATH=https://australasianeconolympiad.org perseus deploy -e",
+    "PERSEUS_BASE_PATH=https://australasianeconolympiad.org perseus export-error-page --code 404 --output pkg/404.html",
 ]
 site.subcommands.deploy-test = [
     "bonnie tailwind prod",
