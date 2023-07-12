@@ -11,6 +11,7 @@ pub fn main<G: Html>() -> PerseusApp<G> {
     PerseusApp::new()
         .template(crate::templates::index::get_template())
         .template(crate::templates::schedule::get_template())
+        .template(crate::templates::auth_redirect::get_template())
         .capsule_ref(&*crate::capsules::SPONSOR)
         .global_state_creator(crate::global_state::get_gsc())
         .static_alias("/favicon.ico", "static/logo.ico")

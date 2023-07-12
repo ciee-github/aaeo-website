@@ -10,7 +10,9 @@ pub static SUPABASE: Lazy<Supabase> =
 
 /// A representation of a Supabase client that does what we want. This maintains no internal state, and rather interoperates directly with JS using direct code
 /// evaluation. This expects `window.supabase` to be the Supabase API.
-pub struct Supabase {}
+pub struct Supabase {
+    pub url: String,
+}
 impl Supabase {
     /// Creates a new Supabase client. This will use the API information defined in `app/.supabase_config`, which should contain the anonymous key on the first
     /// line, and the API URL on the second line.
@@ -30,7 +32,9 @@ impl Supabase {
         create_client(&url, &anon_key)
             .map_err(|_| anyhow!("failed to instantiate supabase client"))?;
 
-        Ok(Self {})
+        Ok(Self {
+            url,
+        })
     }
     /// Signs a user in using a magic link sent to their email.
     pub async fn sign_in(&self, email: &str) -> Result<()> {
