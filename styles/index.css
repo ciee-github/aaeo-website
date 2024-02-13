@@ -40,11 +40,16 @@ footer {
 .bg-competition {
     background-image: url("./competition_wave.svg");
 }
-.bg-people {
-    background-image: url("./people.avif");
+.bg-primary-1 {
+    background-image: url("./team.avif");
 }
-.bg-compass {
-    background-image: url("./compass.avif")
+.bg-primary-2 {
+    background-image: url("./participants.avif");
+    /* Captures actual participants while avoiding blurred face on most screens */
+    background-position: 45% center;
+}
+.link-color {
+    filter: drop-shadow(5px 5px 10px white);
 }
 
 /* Fix the scroll targets with a fixed-position header */
