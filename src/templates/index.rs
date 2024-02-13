@@ -30,7 +30,7 @@ fn index_page<G: Html>(cx: Scope, state: IndexState) -> View<G> {
                         }
                         a(
                             class = "underline",
-                            href = "2023",
+                            href = "competition/2023",
                         ) { "here" }
                         ", and we look forward to a fantastic competition in 2024!"
                     }

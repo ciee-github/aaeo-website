@@ -10,7 +10,7 @@ use perseus::prelude::*;
 pub fn main<G: Html>() -> PerseusApp<G> {
     PerseusApp::new()
         .template(crate::templates::index::get_template())
-        .template(crate::templates::competition_2023::get_template())
+        .template(crate::templates::competition::get_template())
         .template(crate::templates::schedule::get_template())
         .template(crate::templates::auth_redirect::get_template())
         .capsule_ref(&*crate::capsules::SPONSOR)
