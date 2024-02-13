@@ -37,7 +37,7 @@ fn sponsor_capsule<G: Html>(cx: Scope, state: SponsorState, _props: ()) -> View<
                     img(src = state.logo_url, alt = state.name, height = "150", width = "150") {}
                 }
             }
-            div(class = "flex flex-col justify-center row-span-2 text-left") {
+            div(class = "flex flex-col justify-center row-span-2 text-left prose prose-slate") {
                 (state.description)
             }
         }

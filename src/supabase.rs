@@ -32,9 +32,7 @@ impl Supabase {
         create_client(&url, &anon_key)
             .map_err(|_| anyhow!("failed to instantiate supabase client"))?;
 
-        Ok(Self {
-            url,
-        })
+        Ok(Self { url })
     }
     /// Signs a user in using a magic link sent to their email.
     pub async fn sign_in(&self, email: &str) -> Result<()> {

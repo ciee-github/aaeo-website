@@ -8,8 +8,8 @@ fn redirect_page<G: Html>(cx: Scope) -> View<G> {
 
     #[cfg(client)]
     {
-        use web_sys::UrlSearchParams;
         use crate::supabase::SUPABASE;
+        use web_sys::UrlSearchParams;
 
         let location = web_sys::window().unwrap().location();
         match (|| {
@@ -28,7 +28,7 @@ fn redirect_page<G: Html>(cx: Scope) -> View<G> {
                 );
                 redirect_url.set(redirect.clone());
                 location.replace(&redirect);
-            },
+            }
             None => error.set(true),
         }
     }

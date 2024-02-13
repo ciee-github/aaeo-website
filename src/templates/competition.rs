@@ -70,7 +70,10 @@ async fn get_build_paths() -> Result<BuildPaths, std::io::Error> {
         }
     }
 
-    Ok(BuildPaths { paths, extra: ().into() })
+    Ok(BuildPaths {
+        paths,
+        extra: ().into(),
+    })
 }
 
 pub fn get_template<G: Html>() -> Template<G> {
