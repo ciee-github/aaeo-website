@@ -23,6 +23,17 @@ fn index_page<G: Html>(cx: Scope, state: IndexState) -> View<G> {
                             href = "#competition"
                         ) { "Learn more" }
                     }
+
+                    div(class = "rounded-lg p-6 bg-stone-100 max-w-lg my-4 mr-4") {
+                        p {
+                            "Congratulations to all those who participated in the 2023 AAEO! You can see details and photos from the event "
+                        }
+                        a(
+                            class = "underline",
+                            href = "2023",
+                        ) { "here" }
+                        ", and we look forward to a fantastic competition in 2024!"
+                    }
                 }
                 div(class = "h-full w-full") {
                     span(class = "flex justify-center items-center h-full w-full text-white bg-cover bg-primary-1") {}

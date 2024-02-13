@@ -1,4 +1,4 @@
-*This details the competition format for 2023, there may be slight changes for 2024.*
+*This details the competition format for [2023](2023), there may be slight changes for 2024.*
 
 ## Round 1 (Individual)
 
