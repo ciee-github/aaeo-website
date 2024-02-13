@@ -18,7 +18,8 @@ pub fn Container<'a, G: Html>(cx: Scope<'a>, props: ContainerProps<'a, G>) -> Vi
                     ul(class = "sm:text-lg items-center underline hidden xs:flex") {
                         NavLink("Competition", "#competition")
                         NavLink("About", "#about")
-                        NavLink("Schedule", "schedule")
+                        NavLink("Contact", "#contact")
+                        // NavLink("Schedule", "schedule")
                         // NavLink("News", "news")
                     }
                 }
@@ -37,7 +38,7 @@ pub fn Container<'a, G: Html>(cx: Scope<'a>, props: ContainerProps<'a, G>) -> Vi
 fn NavLink<G: Html>(cx: Scope, title: &'static str, link: &'static str) -> View<G> {
     view! {
         cx,
-        li(class = "px-2 xs:px-6") {
+        li(class = "px-2 xs:px-6 link-color") {
             a(href = link) { (title) }
         }
     }

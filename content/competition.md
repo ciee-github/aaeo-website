@@ -1,3 +1,5 @@
+*This details the competition format for 2023, there may be slight changes for 2024.*
+
 ## Round 1 (Individual)
 
 While in their home country, participants will respond to four extended response questions. This work will be submitted for grading and will contribute to students' overall performance in the AAEO.

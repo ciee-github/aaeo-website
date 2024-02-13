@@ -25,20 +25,21 @@ fn index_page<G: Html>(cx: Scope, state: IndexState) -> View<G> {
                     }
                 }
                 div(class = "h-full w-full") {
-                    span(class = "flex justify-center items-center h-full w-full text-white bg-cover bg-people") {}
+                    span(class = "flex justify-center items-center h-full w-full text-white bg-cover bg-primary-1") {}
                 }
             }
             section(id = "competition", class = "w-full min-h-screen grid grid-rows-[1fr_1fr_20rem] md:grid-rows-1 md:grid-cols-3") {
                 div(class = "h-full w-full") {
-                    span(class = "flex justify-center items-center h-full w-full text-white bg-cover bg-compass") {}
+                    span(class = "flex justify-center items-center h-full w-full text-white bg-cover bg-primary-2") {}
                 }
                 div(class = "row-start-1 row-span-2 md:col-span-2 md:col-start-2 flex flex-col justify-center items-center p-4 py-8 bg-competition bg-cover") {
                     div(class = "prose prose-slate prose-h1:underline md:text-right md:ml-20 my-6") {
                         div(dangerously_set_inner_html = &format!("<h1>Competition</h1>{}", state.competition_html)) {}
-                        a(
-                            class = "rounded-lg border-2 border-neutral-600 hover:bg-amber-400 hover:border-amber-400 transition-colors duration-200 text-lg p-2 px-4 text-neutral-600 hover:text-white",
-                            href = "schedule"
-                        ) { "Schedule" }
+                        // NOTE: Schedule button is hidden until competition starts
+                        // a(
+                        //     class = "rounded-lg border-2 border-neutral-600 hover:bg-amber-400 hover:border-amber-400 transition-colors duration-200 text-lg p-2 px-4 text-neutral-600 hover:text-white",
+                        //     href = "schedule"
+                        // ) { "Schedule" }
                     }
                 }
             }
@@ -46,10 +47,18 @@ fn index_page<G: Html>(cx: Scope, state: IndexState) -> View<G> {
                 div(class = "max-w-4xl text-center") {
                     h1(class = "text-4xl") { "About Us" }
                     p(class = "mt-3 mb-6") { (state.about) }
-                    h3(class = "text-2xl mb-2") { "Our Sponsors" }
+                    h3(class = "text-2xl font-semibold mb-2") { "Our Sponsors" }
                     (SPONSOR.widget(cx, "unsw", ()))
                     (SPONSOR.widget(cx, "ciee", ()))
                     (SPONSOR.widget(cx, "elite", ()))
+                }
+                div(id = "contact", class = "pt-8") {
+                    div(class = "max-w-4xl text-center") {
+                        h1(class = "text-4xl") { "Get Involved" }
+                    }
+                    div(class = "prose prose-slate prose-a:font-normal") {
+                        div(dangerously_set_inner_html = &state.contact_html) {}
+                    }
                 }
             }
         }
@@ -62,6 +71,8 @@ struct IndexState {
     competition_html: String,
     /// The text to go at the header of the about section.
     about: String,
+    /// The HTML for the contact section.
+    contact_html: String,
 }
 
 #[engine_only_fn]
@@ -82,10 +93,16 @@ async fn get_build_state(
     let md_parser = Parser::new(&competition_md);
     html::push_html(&mut competition_html, md_parser);
 
+    let contact_md = std::fs::read_to_string("content/contact.md")?;
+    let mut contact_html = String::new();
+    let md_parser = Parser::new(&contact_md);
+    html::push_html(&mut contact_html, md_parser);
+
     let about = std::fs::read_to_string("content/about.txt")?;
 
     Ok(IndexState {
         competition_html,
+        contact_html,
         about,
     })
 }
