@@ -57,9 +57,9 @@ fn index_page<G: Html>(cx: Scope, state: IndexState) -> View<G> {
                 }
             }
             section(id = "about", class = "w-full min-h-screen py-8 flex flex-col justify-center items-center w-full") {
-                div(class = "max-w-4xl text-center") {
+                div(class = "max-w-4xl text-center flex flex-col items-center") {
                     h1(class = "text-4xl") { "About Us" }
-                    p(class = "mt-3 mb-6 px-4 prose prose-slate") { (state.about) }
+                    p(class = "mt-3 mb-6 px-4 prose prose-slate text-left") { (state.about) }
                     h3(class = "text-2xl font-semibold mb-2") { "Our Sponsors" }
                     (SPONSOR.widget(cx, "unsw", ()))
                     (SPONSOR.widget(cx, "ciee", ()))
