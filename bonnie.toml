@@ -7,6 +7,8 @@ site.subcommands.deploy-prod = [
     # TODO Change to domain name
     "PERSEUS_BASE_PATH=https://australasianeconolympiad.org perseus deploy -e",
     "PERSEUS_BASE_PATH=https://australasianeconolympiad.org perseus export-error-page --code 404 --output pkg/404.html",
+    # Prevents domain name from being reset
+    "echo \"australasianeconolympiad.org\" > pkg/CNAME"
 ]
 site.subcommands.deploy-test = [
     "bonnie tailwind prod",
