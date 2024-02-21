@@ -8,7 +8,7 @@ use perseus::prelude::*;
 
 #[perseus::main_export]
 pub fn main<G: Html>() -> PerseusApp<G> {
-    PerseusApp::new()
+    let mut app = PerseusApp::new()
         .template(crate::templates::index::get_template())
         .template(crate::templates::competition::get_template())
         .template(crate::templates::schedule::get_template())
@@ -21,7 +21,7 @@ pub fn main<G: Html>() -> PerseusApp<G> {
                 cx,
                 html(lang = "en") {
                     head {
-                        meta(name = "viewport", content = "width=device-width") {}
+                        meta(name = "viewport", content = "width=device-width, initial-scale=1") {}
                         meta(name = "description", content = "Information about the Australasian Economics Olympiad (AAEO).")
 
                         link(rel = "stylesheet", href = ".perseus/static/tailwind.css") {}
@@ -44,5 +44,31 @@ pub fn main<G: Html>() -> PerseusApp<G> {
             }
         })
         // TODO
-        .error_views(ErrorViews::unlocalized_development_default())
+        .error_views(ErrorViews::unlocalized_development_default());
+
+    // Set up static aliases for images in competition year folders
+    for entry in std::fs::read_dir("content")
+        .unwrap()
+        .filter_map(|entry| entry.ok())
+    {
+        if entry.file_type().unwrap().is_dir() {
+            let year_str = entry.file_name().into_string().unwrap();
+            if year_str.parse::<u32>().is_ok() {
+                for entry in std::fs::read_dir(&format!("content/{}", year_str))
+                    .unwrap()
+                    .filter_map(|entry| entry.ok())
+                {
+                    let file_name = entry.file_name().into_string().unwrap();
+                    if file_name.ends_with(".avif") {
+                        let static_alias =
+                            format!("/static/competition-{}-{}", year_str, file_name);
+                        let path = format!("content/{}/{}", year_str, file_name);
+                        app = app.static_alias(&static_alias, &path);
+                    }
+                }
+            }
+        }
+    }
+
+    app
 }
