@@ -22,6 +22,7 @@ pub fn main<G: Html>() -> PerseusApp<G> {
                 html(lang = "en") {
                     head {
                         meta(name = "viewport", content = "width=device-width, initial-scale=1") {}
+                        meta(charset = "utf-8") {}
                         meta(name = "description", content = "Information about the Australasian Economics Olympiad (AAEO).")
 
                         link(rel = "stylesheet", href = ".perseus/static/tailwind.css") {}

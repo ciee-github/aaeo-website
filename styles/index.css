@@ -50,6 +50,7 @@ footer {
 }
 .bg-primary-3 {
     background-image: url("./presenting.avif");
+    background-position: center center;
 }
 .bg-about {
     background-image: url("./about_bg.svg");
