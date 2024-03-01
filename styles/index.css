@@ -48,6 +48,12 @@ footer {
     /* Captures actual participants while avoiding blurred face on most screens */
     background-position: 45% center;
 }
+.bg-primary-3 {
+    background-image: url("./presenting.avif");
+}
+.bg-about {
+    background-image: url("./about_bg.svg");
+}
 .link-color {
     background-blend-mode: lighten;
 }
