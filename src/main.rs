@@ -46,24 +46,27 @@ pub fn main<G: Html>() -> PerseusApp<G> {
         // TODO
         .error_views(ErrorViews::unlocalized_development_default());
 
-    // Set up static aliases for images in competition year folders
-    for entry in std::fs::read_dir("content")
-        .unwrap()
-        .filter_map(|entry| entry.ok())
+    #[cfg(engine)]
     {
-        if entry.file_type().unwrap().is_dir() {
-            let year_str = entry.file_name().into_string().unwrap();
-            if year_str.parse::<u32>().is_ok() {
-                for entry in std::fs::read_dir(&format!("content/{}", year_str))
-                    .unwrap()
-                    .filter_map(|entry| entry.ok())
-                {
-                    let file_name = entry.file_name().into_string().unwrap();
-                    if file_name.ends_with(".avif") {
-                        let static_alias =
-                            format!("/static/competition-{}-{}", year_str, file_name);
-                        let path = format!("content/{}/{}", year_str, file_name);
-                        app = app.static_alias(&static_alias, &path);
+        // Set up static aliases for images in competition year folders
+        for entry in std::fs::read_dir("content")
+            .unwrap()
+            .filter_map(|entry| entry.ok())
+        {
+            if entry.file_type().unwrap().is_dir() {
+                let year_str = entry.file_name().into_string().unwrap();
+                if year_str.parse::<u32>().is_ok() {
+                    for entry in std::fs::read_dir(&format!("content/{}", year_str))
+                        .unwrap()
+                        .filter_map(|entry| entry.ok())
+                    {
+                        let file_name = entry.file_name().into_string().unwrap();
+                        if file_name.ends_with(".avif") {
+                            let static_alias =
+                                format!("/static/competition-{}-{}", year_str, file_name);
+                            let path = format!("content/{}/{}", year_str, file_name);
+                            app = app.static_alias(&static_alias, &path);
+                        }
                     }
                 }
             }
