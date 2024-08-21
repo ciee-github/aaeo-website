@@ -5,17 +5,17 @@ site.cmd = "concurrently \"bonnie export\" \"bonnie tailwind\""
 site.subcommands.deploy-prod = [
     "bonnie tailwind prod",
     # TODO Change to domain name
-    "PERSEUS_BASE_PATH=https://australasianeconolympiad.org perseus deploy -e",
-    "PERSEUS_BASE_PATH=https://australasianeconolympiad.org perseus export-error-page --code 404 --output pkg/404.html",
+    "PERSEUS_BASE_PATH=https://australasianeconolympiad.org perseus --wasm-opt-version version_118 deploy -e",
+    "PERSEUS_BASE_PATH=https://australasianeconolympiad.org perseus --wasm-opt-version version_118 export-error-page --code 404 --output pkg/404.html",
     # Prevents domain name from being reset
     "echo \"australasianeconolympiad.org\" > pkg/CNAME"
 ]
 site.subcommands.deploy-test = [
     "bonnie tailwind prod",
-    "perseus deploy -e",
-    "perseus export-error-page --code 404 --output pkg/404.html"
+    "perseus --wasm-opt-version version_118 deploy -e",
+    "perseus --wasm-opt-version version_118 export-error-page --code 404 --output pkg/404.html"
 ]
-export = "perseus export -sw --cargo-engine-path cargo-clif"
+export = "perseus --wasm-opt-version version_118 export -sw --cargo-engine-path cargo-clif"
 tailwind.cmd = [
     "tailwind -i styles/index.css -c styles/tailwind.config.js -o static/tailwind.css -w"
 ]
