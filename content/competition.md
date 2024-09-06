@@ -1,3 +1,5 @@
+*Previous competitions: [2023](/competition/2023) and [2024](/competition/2024).*
+
 ## Part 1 (Individual -- Economic Concepts and Analysis)
 
 While in their home country, participants will respond to four extended response questions. This work will be submitted for grading and will contribute to students' overall individual performance in the AAEO.
