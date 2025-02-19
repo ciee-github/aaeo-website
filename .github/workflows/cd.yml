@@ -50,7 +50,7 @@ jobs:
               # if: steps.npm-cache.outputs.cache-hit != 'true'
               run: npm install
             - name: Install Tailwind
-              run: npm i -g @tailwindcss/cli
+              run: npm i -g tailwindcss@3
 
             - name: Build site
               run: bonnie site deploy-prod
