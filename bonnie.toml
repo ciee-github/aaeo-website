@@ -15,7 +15,7 @@ site.subcommands.deploy-test = [
     "perseus --wasm-opt-version version_118 deploy -e",
     "perseus --wasm-opt-version version_118 export-error-page --code 404 --output pkg/404.html"
 ]
-export = "perseus --wasm-opt-version version_118 export -sw --cargo-engine-path cargo-clif"
+export = "perseus --wasm-opt-version version_118 export -sw"
 tailwind.cmd = [
     "tailwind -i styles/index.css -c styles/tailwind.config.js -o static/tailwind.css -w"
 ]
