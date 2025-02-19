@@ -1,3 +1,4 @@
+*The 2025 AAEO will happen from **July 3-6**.*
 *Previous competitions: [2023](/competition/2023) and [2024](/competition/2024).*
 
 ## Part 1 (Individual -- Economic Concepts and Analysis)

@@ -29,7 +29,7 @@ pub fn Container<'a, G: Html>(cx: Scope<'a>, props: ContainerProps<'a, G>) -> Vi
             (children)
         }
         footer(class = "bg-slate-100 w-full p-4 flex justify-center") {
-            p(class = "text-sm") { "Copyright AAEO 2023" }
+            p(class = "text-sm") { "Copyright AAEO 2023-2025" }
         }
     }
 }

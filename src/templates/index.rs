@@ -27,12 +27,14 @@ fn index_page<G: Html>(cx: Scope, state: IndexState) -> View<G> {
                     div(class = "w-full flex flex-col justify-center md:justify-start") {
                         div(class = "text-base md:text-lg rounded-xl p-3 md:p-6 bg-slate-100/30 backdrop-blur-lg my-4 mx-4 md:ml-0 md:mr-4 md:max-w-xl") {
                             p {
-                                "Congratulations to all those who participated in the 2024 AAEO! You can see details and photos from the event "
+                                "The AAEO will run from "
+                                strong {"July 3-6 in 2025" }
+                                ". Congratulations to all those who participated in the 2024! You can see details and photos from the event "
                                 a(
                                     class = "underline",
                                     href = "competition/2024",
                                 ) { "here" }
-                                ", and we look forward to a fantastic competition in 2025!"
+                                "."
                             }
                         }
                     }
